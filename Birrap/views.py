@@ -1,12 +1,15 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
-def saludo(request):
+def Saludo(request):
     return HttpResponse("Hola")
 
-def segundo_template(request):
+def Home(request):
     context = {
-        'name':'Luca',
-        'last_name':'Citta Giordano',
+        'name':'Claudio',
+        'last_name':'Rodriguez',
     }
     return render(request, 'Home.html', context=context)
+
+def index(request):
+    return render(request, 'index.html')

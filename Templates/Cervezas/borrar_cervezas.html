@@ -1,0 +1,23 @@
+{% extends 'Base.html' %}
+
+{% block titulo %}
+Borrar Cerveza
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+<p>Estilo: {{cerveza.style}}</p>
+<p>Descripcion: {{cerveza.description}}</p>
+<p>Nivel de alcohol: {{cerveza.alcohol_volume}}</p>
+<p>IBU: {{cerveza.IBU}}</p>
+<p>Precio: {{cerveza.price}}</p>
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Borrar">
+</form>
+
+
+
+{% endblock %}
