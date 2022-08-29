@@ -1,19 +1,41 @@
 {% extends 'Base.html' %}
 
 {% block titulo %}
-    Index
+    Home
 {% endblock %}
 
 
 {% block contenido_que_cambia %}
 
-<h1>Este es el index</h1>
-<h2>{{request.user.is_authenticated}}</h2>
+<hr>
+<h1 class="display-1"> <ul class="container">
 
-{% if message %}
 
-    <h2>{{message}}</h2>
+    <li class="list-group-item list-group-item">
+    <img src="https://previews.123rf.com/images/indomercy/indomercy1301/indomercy130100248/17444699-lobo-s%C3%ADmbolo.jpg" style="width: 90px">
 
-{% endif %}
+--> Bienvenido!
+
+</li></ul></h1>
+
+<hr>
+
+<h2 class="h1"> <ul class="container">
+    
+    <li class="list-group-item list-group-item">Te invitamos a descubrir nuestro <span class="text-muted"> mundo cervecero </span>;)</li>
+    
+    <img src="https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2017/07/06123924/cerveza-SF-1.jpg" style="width: 1110px">
+
+</ul></h2>    
+
+    <hr>
+
+<p class="container">
+    Entendemos que cada paladar es particular y es por eso que los principales ejes a la hora de componer nuestras cervezas son la tomabilidad y el equilibrio de los sabores complejos.
+
+
+</p>
+
+<hr>
 
 {% endblock %}
