@@ -1,0 +1,21 @@
+{% extends 'Base.html' %}
+
+{% block titulo %}
+Borrar Comida
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+<p>Nombre: {{comida.style}}</p>
+<p>Descripcion: {{comida.description}}</p>
+<p>Precio: {{comida.price}}</p>
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Borrar">
+</form>
+
+
+
+{% endblock %}

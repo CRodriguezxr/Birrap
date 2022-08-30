@@ -15,4 +15,5 @@ urlpatterns = [
     path('Home/', Home, name = 'Home'),
 
     path('Cervezas/', include('Cervezas.urls')),
+    path('Comidas/', include('Comidas.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
