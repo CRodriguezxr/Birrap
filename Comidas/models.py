@@ -11,7 +11,7 @@ class Comidas(models.Model):
 
 
     def __str__(self):
-        return self.style
+        return self.name
 
 
     class Meta:
