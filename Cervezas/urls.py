@@ -6,7 +6,7 @@ urlpatterns = [
     path('lista-cervezas/', lista_cervezas, name='lista_cervezas'),
     path('crear-cerveza/', crear_cerveza, name='crear_cerveza'),
     path('primer-formulario/', primer_formulario, name='primer_formulario'),
-    path('search-cerveza/', buscar_cerveza, name='buscar_cerveza'),
+    path('search-cervezas/', buscar_cerveza, name='buscar_cerveza'),
     path('delete-cerveza/<int:pk>/', borrar_cervezas, name='borrar_cervezas'),
     path('update-cerveza/<int:pk>/', actualizar_cerveza, name='actualizar_cerveza'),
 ]

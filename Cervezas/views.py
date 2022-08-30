@@ -35,10 +35,12 @@ def actualizar_cerveza(request, pk):
         form = Formulario_cervezas(request.POST)
         if form.is_valid():
             cerveza = Cerveza.objects.get(id=pk)
-            cerveza.name = form.cleaned_data['name']
-            cerveza.price = form.cleaned_data['price']
+            cerveza.style = form.cleaned_data['style']
             cerveza.description = form.cleaned_data['description']
-            cerveza.stock = form.cleaned_data['stock']
+            cerveza.alcohol_volume = form.cleaned_data['alcohol_volume']
+            cerveza.IBU = form.cleaned_data['IBU']
+            cerveza.price = form.cleaned_data['price']
+            cerveza.image = form.cleaned_data['image']
             cerveza.save()
 
             return redirect(lista_cervezas)
@@ -47,10 +49,12 @@ def actualizar_cerveza(request, pk):
         cerveza = Cerveza.objects.get(id=pk)
 
         form = Formulario_cervezas(initial={
-                                        'name':cerveza.name,
-                                        'price':cerveza.price, 
+                                        'style':cerveza.style,
                                         'description':cerveza.description,
-                                        'stock':cerveza.stock})
+                                        "alcohol_volume":cerveza.alcohol_volume,
+                                        "IBU":cerveza.IBU,
+                                        'price':cerveza.price, 
+                                        "image":cerveza.image,})
         context = {'form':form}
         return render(request, 'Cervezas/actualizar_cerveza.html', context=context)
 
@@ -75,7 +79,7 @@ def primer_formulario(request):
 
 def buscar_cerveza(request):
     search = request.GET['search']
-    cerveza = Cerveza.objects.filter(name__icontains=search)  #Trae los que cumplan la condicion
+    cerveza = Cerveza.objects.filter(style__icontains=search)  #Trae los que cumplan la condicion
     context = {'cerveza':cerveza}
     return render(request, 'Cervezas/buscar_cervezas.html', context=context)
 
