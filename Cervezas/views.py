@@ -8,10 +8,12 @@ from django.contrib.auth.decorators import login_required
 
 
 def detalle_cervezas(request,pk):
-    if request.method == 'GET':
-        cerveza = Cerveza.objects.get(pk=pk)
-        context = {'cerveza':cerveza}
-        return render(request, 'Cervezas/detalle_cervezas.html', context=context)
+    if request.user.is_authenticated:
+        if request.method == 'GET':
+            cerveza = Cerveza.objects.get(pk=pk)
+            context = {'cerveza':cerveza}
+            return render(request, 'Cervezas/detalle_cervezas.html', context=context)
+    return redirect('login')
 
 def lista_cervezas(request):
     
