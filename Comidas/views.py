@@ -6,6 +6,14 @@ from Comidas.forms import Formulario_comidas
 from django.contrib.auth.decorators import login_required
 
 
+def detalle_comidas(request,pk):
+    if request.user.is_authenticated:
+        if request.method == 'GET':
+            comidas = Comidas.objects.get(pk=pk)
+            context = {'comidas':comidas}
+            return render(request, 'Comidas/detalle_comidas.html', context=context)
+    return redirect('login')
+
 @login_required
 def crear_comida(request):
     if request.user.is_superuser:

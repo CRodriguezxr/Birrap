@@ -1,0 +1,26 @@
+{% extends 'Base.html' %}
+
+{% block titulo %}
+Actualizacion de Comidas
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+
+<div class="card" style="width: 18rem;">
+    <img src="https://okdiario.com/img/2021/12/09/hamburguesas-caseras-rellenas-de-queso-cheddar-655x368.jpg" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title">{{comidas.name}}</h5>
+        <p class="card-text">Descripción: {{comidas.description}}</p>
+        <p class="card-text">Precio: {{comidas.price}}</p>
+        
+        {% if request.user.is_superuser %}
+        <a href="/Comidas/update-comidas/{{comidas.id}}/" class="btn btn-primary">Editar</a>
+        <a href="/Comdias/delete-comidas/{{comidas.id}}/" class="btn btn-danger">Borrar</a>
+        {% endif %}
+    </div>
+</div>
+
+
+
+{% endblock %}
