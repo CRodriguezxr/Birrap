@@ -7,6 +7,8 @@ class Comidas(models.Model):
     description = models.CharField(max_length=500,null=True,blank=True)
     price = models.FloatField()
     image = models.ImageField(upload_to='Comidas/', null=True, blank=True)
+    is_active = models.BooleanField (default=True)
+    
     
 
 

@@ -61,9 +61,7 @@ def actualizar_comidas(request, pk):
         return render(request, 'Comidas/actualizar_comida.html', context=context)
 
 
-@login_required
 def lista_comidas(request):
-    if request.user.is_authenticated:
 
             comidas = Comidas.objects.all() #Trae todos
             context = {
@@ -71,7 +69,6 @@ def lista_comidas(request):
             }
             return render(request, 'Comidas/lista_comidas.html', context=context)
 
-    return redirect('login')
 
 def primer_formulario(request):
     print(request.method)

@@ -9,7 +9,7 @@ class Cerveza(models.Model):
     IBU = models.FloatField()
     price = models.FloatField()
     image = models.ImageField(upload_to='Cervezas/', null=True, blank=True)
-    
+    is_active = models.BooleanField (default=True)
 
 
     def __str__(self):
