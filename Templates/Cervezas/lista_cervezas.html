@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block contenido_que_cambia %}
-
+    {% if request.user.is_superuser %}
+    <a href="/Cervezas/crear-cerveza/" class="btn btn-success">Agregar nuevo producto</a>
+    {% endif %}
     {% for cerveza in cervezas %}
     <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-4 py-3">
@@ -16,8 +18,7 @@
                     <p class="card-text">Descripción: {{cerveza.description}}</p>
                     <p class="card-text">Alc: {{cerveza.alcohol_volume}}   IBU: {{cerveza.IBU}}</p> 
                     <p class="card-text">Precio: {{cerveza.price}}</p>
-                    <a href="/Cervezas/actualizar-cerveza/{{cerveza.id}}" class="btn btn-primary">Editar</a>
-                    <a href="/Cervezas/borrar-cerveza{{cerveza.id}}/" class="btn btn-danger">Borrar</a>
+                    <a href="/Cervezas/detalle-cerveza/{{cerveza.id}}/" class="btn btn-info">Detalle</a>
                 </div>
             </div>
         </div>
