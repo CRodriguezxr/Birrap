@@ -55,9 +55,9 @@ def actualizar_cerveza(request, pk):
         return render(request, 'Cervezas/actualizar_cerveza.html', context=context)
 
 
-@login_required
+
 def lista_cervezas(request):
-    if request.user.is_authenticated:
+    
 
             cervezas = Cerveza.objects.all() #Trae todos
             context = {
@@ -65,7 +65,7 @@ def lista_cervezas(request):
             }
             return render(request, 'Cervezas/lista_cervezas.html', context=context)
 
-    return redirect('login')
+    
 
 def primer_formulario(request):
     print(request.method)
