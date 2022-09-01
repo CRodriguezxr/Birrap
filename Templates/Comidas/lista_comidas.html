@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block contenido_que_cambia %}
-
+    {% if request.user.is_superuser %}
+    <a href="/Comidas/crear-comidas/" class="btn btn-success">Agregar nuevo producto</a>
+    {% endif %}
     {% for comida in comidas %}
     <div class="d-flex flex-row">
         <div class="col-sm-12 col-md-4 col-lg-4 py-3">
@@ -25,7 +27,5 @@
     <div class="d-flex flex-row"></div>
 
 {% endblock %}
-
-<div class="d-flex flex-row"></div>
 
 
