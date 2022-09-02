@@ -1,29 +1,29 @@
 {% extends 'Base.html' %}
-
 {% block titulo %}
     Cervezas Artesanales
 {% endblock %}
 
 {% block contenido_que_cambia %}
-
-    {% for cerveza in cervezas %}
-    <div class="row">
-        <div class="col-sm-12 col-md-4 col-lg-4 py-3">
-        <div class="card shadow">
-                        <img src="https://www.cervezataf.com/wp-content/uploads/2021/03/ingredientes-cerveza-artesanal.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">{{cerveza.style}}</h5>
-                    <p class="card-text">Descripción: {{cerveza.description}}</p>
-                    <p class="card-text">Alc: {{cerveza.alcohol_volume}}   IBU: {{cerveza.IBU}}</p> 
-                    <p class="card-text">Precio: {{cerveza.price}}</p>
-                    <a href="/Cervezas/actualizar-cerveza/{{cerveza.id}}" class="btn btn-primary">Editar</a>
-                    <a href="/Cervezas/borrar-cerveza{{cerveza.id}}/" class="btn btn-danger">Borrar</a>
+    {% if request.user.is_superuser %}
+    <a href="/Cervezas/crear-cerveza/" class="btn btn-success">Agregar nuevo producto</a>
+    {% endif %}
+    <div class="d-flex flex-row">
+        {% for cerveza in cervezas %}
+        <div class="card" style="width: 18rem;">
+            
+            <div class="card shadow">
+                        <img src="https://www.cervezataf.com/wp-content/uploads/2021/03/ingredientes-cerveza-artesanal.jpg" class="card-img-top">   
+                    <div class="card-body">
+                        <h5 class="card-title">{{cerveza.style}}</h5>
+                        <p class="card-text">Descripción: {{cerveza.description}}</p>
+                        <p class="card-text">Alc: {{cerveza.alcohol_volume}}   IBU: {{cerveza.IBU}}</p> 
+                        <p class="card-text">Precio: {{cerveza.price}}</p>
+                        <a href="/Cervezas/detalle-cerveza/{{cerveza.id}}/" class="btn btn-info">Detalle</a>
+                    </div>
                 </div>
-            </div>
+            
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-
 {% endblock %}
-
 

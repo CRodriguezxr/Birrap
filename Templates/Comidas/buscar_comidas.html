@@ -6,14 +6,14 @@
 
 {% block contenido_que_cambia %}
 
-    {% for comida in Comidas %}
+    {% for comi in comida %}
     <div class="card" style="width: 18rem;">
         <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fs3.amazonaws.com%2Farc-wordpress-client-uploads%2Finfobae-wp%2Fwp-content%2Fuploads%2F2017%2F07%2F06123915%2Fcerveza-1920-2.jpg&imgrefurl=https%3A%2F%2Fwww.infobae.com%2Feconomia%2Ffinanzas-y-negocios%2F2018%2F02%2F11%2Fte-tentaste-con-el-boom-de-la-cerveza-artesanal-u-otro-emprendimiento-11-consejos-para-no-fundirte%2F&tbnid=WSJ-zJgb0cVvMM&vet=12ahUKEwiH2JHVm-f5AhUggpUCHUABBcQQMygAegUIARDlAQ..i&docid=dh6tHvxjiXWvFM&w=1920&h=1080&q=cerveza%20artesanal&ved=2ahUKEwiH2JHVm-f5AhUggpUCHUABBcQQMygAegUIARDlAQ" class="card-img-top">
         <div class="card-body">
-            <h5 class="card-title">Nombre:{{comida.name}}</h5>
-            <p class="card-text">Descripción: {{comida.description}}</p>
-            <p class="card-text">Precio: {{comida.price}}</p>
-            <p class="card-text">Stock: {{comida.stock}}</p>
+            <h5 class="card-title">Nombre:{{comi.name}}</h5>
+            <p class="card-text">Descripción: {{comi.description}}</p>
+            <p class="card-text">Precio: {{comi.price}}</p>
+            <p class="card-text">Stock: {{comi.stock}}</p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
     </div>

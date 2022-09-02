@@ -6,23 +6,28 @@
 
 {% block contenido_que_cambia %}
 
-    {% for comida in comidas %}
-    <div class="row">
-        <div class="col-sm-12 col-md-4 col-lg-4 py-3">
-        <div class="card shadow">
-                        <img src="https://okdiario.com/img/2021/12/09/hamburguesas-caseras-rellenas-de-queso-cheddar-655x368.jpg" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">{{comida.name}}</h5>
-                    <p class="card-text">Descripción: {{comida.description}}</p>
-                    <p class="card-text">Precio: {{comida.price}}</p>
-                    <a href="/Cervezas/actualizar-cerveza/{{cerveza.id}}" class="btn btn-primary">Editar</a>
-                    <a href="/Cervezas/borrar-cerveza{{cerveza.id}}/" class="btn btn-danger">Borrar</a>
+    {% if request.user.is_superuser %}
+        <a href="/Comidas/crear-comidas/" class="btn btn-success">Agregar nuevo producto</a>
+    {% endif %}
+    <div class="d-flex flex-row">
+        {% for comida in comidas %}
+        
+            <div class="card" style="width: 18rem;">
+                <div class="card shadow">
+                                <img src="https://okdiario.com/img/2021/12/09/hamburguesas-caseras-rellenas-de-queso-cheddar-655x368.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{comida.name}}</h5>
+                            <p class="card-text">Descripción: {{comida.description}}</p>
+                            <p class="card-text">Precio: {{comida.price}}</p>
+                            
+                            <a href="/Comidas/detalle-comida/{{comida.id}}" class="btn btn-info">Detalle</a>
+                            
+                        </div>
                 </div>
             </div>
-        </div>
+        
+        {% endfor %}
     </div>
-    {% endfor %}
-
 {% endblock %}
 
 

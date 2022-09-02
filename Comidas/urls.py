@@ -1,5 +1,5 @@
 from django.urls import path
-from Comidas.views import lista_comidas, crear_comida, primer_formulario, buscar_comida, borrar_comida, actualizar_comidas
+from Comidas.views import lista_comidas, crear_comida, primer_formulario, buscar_comida, borrar_comida, actualizar_comidas,detalle_comidas
 
 
 urlpatterns = [
@@ -9,4 +9,5 @@ urlpatterns = [
     path('search-comidas/', buscar_comida, name='buscar_comidas'),
     path('delete-comidas/<int:pk>/', borrar_comida, name='borrar_comidas'),
     path('update-comidas/<int:pk>/', actualizar_comidas, name='actualizar_comidas'),
+    path('detalle-comida/<int:pk>/',detalle_comidas,name='detalle_comida')
 ]
