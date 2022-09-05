@@ -1,10 +1,15 @@
+from multiprocessing import context
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 
+from Users.models import User_profile
+
 from django.contrib.auth import login, logout, authenticate
 
-from Users.forms import User_registration_form
+from Users.forms import User_registration_form,User_edit_form
+
+from django.contrib.auth.decorators import login_required
 
 
 def login_request(request):
@@ -45,6 +50,32 @@ def register(request):
         form = User_registration_form()
         return render(request, 'users/register.html', {'form': form})
 
+
+@login_required
+def edit_form(request):
+    usuario = request.user
+    if request.method== "POST":
+        form = User_edit_form(request.POST)
+        if form.is_valid():
+            usuario = form.cleaned_data["username"]
+            usuario.email = form.cleaned_data["email"]
+            usuario.password = form.cleaned_data["password1"]
+            usuario.password = form.cleaned_data["password2"]
+            usuario.save()
+
+            return render(request, "login")
+    else:
+        form = User_edit_form(initial={
+            "username":usuario,
+            "email":usuario.email,
+        })
+        context = {"form": form}
+        return render(request,"users/edit_user.html",context=context)
+
+
+
+    
+
 def show_profile(request):
     if request.user.is_authenticated:
-        return HttpResponse(request.user.profile.phone)
+        return HttpResponse(request.user.password)

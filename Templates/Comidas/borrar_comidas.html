@@ -6,15 +6,23 @@ Borrar Comida
 
 {% block contenido_que_cambia %}
 
-<p>Nombre: {{comida.name}}</p>
-<p>Descripcion: {{comida.description}}</p>
-<p>Precio: {{comida.price}}</p>
-
-
-<form action="" method="POST">
-    {% csrf_token %}
-    <input type="submit" value="Borrar">
-</form>
+<section class="p-5">
+    <div>
+        <h5>Seguro que desea eliminar el producto?</h5>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Borrar">
+        </form>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="{{comida.image.url}}" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{comida.name}}</h5>
+            <p class="card-text">Descripción: {{comida.description}}</p>
+            <p class="card-text">Precio: {{comida.price}}</p>
+        </div>
+    </div>
+</section>
 
 
 

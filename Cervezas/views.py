@@ -75,7 +75,7 @@ def actualizar_cerveza(request, pk):
     if request.user.is_authenticated:
         if request.user.is_superuser:
             if request.method == 'POST':
-                form = Formulario_cervezas(request.POST)
+                form = Formulario_cervezas (request.POST,request.FILES)
                 if form.is_valid():
                     cerveza = Cerveza.objects.get(id=pk)
                     cerveza.style = form.cleaned_data['style']

@@ -31,7 +31,7 @@ def buscar_comida(request):
     search = request.GET['search']
     comida = Comidas.objects.filter(name__icontains=search)  #Trae los que cumplan la condicion
     context = {'comida':comida}
-    return render(request, 'Comidas/buscar_comida.html', context=context)
+    return render(request, 'Comidas/buscar_comidas.html', context=context)
 
 
 
@@ -73,12 +73,13 @@ def actualizar_comidas(request, pk):
     if request.user.is_authenticated:
         if request.user.is_superuser:
             if request.method == 'POST':
-                form = Formulario_comidas(request.POST)
+                form = Formulario_comidas(request.POST,request.FILES)
                 if form.is_valid():
                     comida = Comidas.objects.get(id=pk)
                     comida.name = form.cleaned_data['name']
                     comida.price = form.cleaned_data['price']
                     comida.description = form.cleaned_data['description']
+                    comida.image = form.cleaned_data['image']
                     
                     comida.save()
 
@@ -91,6 +92,7 @@ def actualizar_comidas(request, pk):
                                                 'name':comida.name,
                                                 'price':comida.price, 
                                                 'description':comida.description,
+                                                'image':comida.image
                                                 })
                 context = {'form':form}
                 return render(request, 'Comidas/actualizar_comidas.html', context=context)

@@ -4,17 +4,30 @@
     Comidas
 {% endblock %}
 
+
+{% block formulario_busqueda %}
+    <form class="form-inline my-2 my-lg-0" action="/Comidas/search-comidas/" method="GET">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search"
+            name='search'>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+{% endblock %}
+
 {% block contenido_que_cambia %}
 
     {% if request.user.is_superuser %}
         <a href="/Comidas/crear-comidas/" class="btn btn-success">Agregar nuevo producto</a>
     {% endif %}
-    <div class="d-flex flex-row">
+    <div class="d-flex flex-row justify-content-center">
         {% for comida in comidas %}
         
             <div class="card" style="width: 18rem;">
                 <div class="card shadow">
-                                <img src="https://okdiario.com/img/2021/12/09/hamburguesas-caseras-rellenas-de-queso-cheddar-655x368.jpg" class="card-img-top">
+                    {% if comida.image %}
+                    <img src="{{comida.image.url}}" class="card-img-top">
+                    {% else %}
+                        <img src="https://okdiario.com/img/2021/12/09/hamburguesas-caseras-rellenas-de-queso-cheddar-655x368.jpg" class="card-img-top">
+                    {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">{{comida.name}}</h5>
                             <p class="card-text">Descripción: {{comida.description}}</p>
