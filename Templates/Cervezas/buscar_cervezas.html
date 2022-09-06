@@ -18,7 +18,12 @@
     <section class="d-flex flex-row justify-content-center">
         {% for cervez in cerveza %}
         <div class="card" style="width: 18rem;">
-            <img src="{{cervez.image.url}}" class="card-img-top">
+            {% if cerveza.image %}
+                    <img src="{{cervez.image.url}}" class="card-img-top">   
+
+                    {% else %}
+                    <img src="https://www.cervezataf.com/wp-content/uploads/2021/03/ingredientes-cerveza-artesanal.jpg" class="card-img-top">
+                    {% endif %}
             <div class="card-body">
                 <h5 class="card-title">{{cervez.style}}</h5>
                 <p class="card-text">Descripción: {{cervez.description}}</p>
