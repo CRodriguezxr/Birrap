@@ -55,18 +55,18 @@ def register(request):
 def edit_form(request):
     usuario = request.user
     if request.method== "POST":
-        form = User_edit_form(request.POST)
+        form = User_registration_form(request.POST)
         if form.is_valid():
-            usuario = form.cleaned_data["username"]
+            # usuario.user = form.cleaned_data["user"]
             usuario.email = form.cleaned_data["email"]
-            usuario.password = form.cleaned_data["password1"]
-            usuario.password = form.cleaned_data["password2"]
+            usuario.password1 = form.cleaned_data["password1"]
+            usuario.password2 = form.cleaned_data["password2"]
             usuario.save()
 
             return render(request, "login")
     else:
-        form = User_edit_form(initial={
-            "username":usuario,
+        form = User_registration_form(initial={
+            # "user":usuario.user,
             "email":usuario.email,
         })
         context = {"form": form}
@@ -78,4 +78,4 @@ def edit_form(request):
 
 def show_profile(request):
     if request.user.is_authenticated:
-        return HttpResponse(request.user.password)
+        return HttpResponse(request.user.profile)
