@@ -8,7 +8,12 @@ Actualizacion de Cervezas
 
 
 <div class="card" style="width: 18rem;">
-    <img src="{{cerveza.image.url}}" class="card-img-top">
+    <{% if cerveza.image %}
+    <img src="{{cerveza.image.url}}" class="card-img-top">   
+
+    {% else %}
+    <img src="https://www.cervezataf.com/wp-content/uploads/2021/03/ingredientes-cerveza-artesanal.jpg" class="card-img-top">
+    {% endif %}
     <div class="card-body">
         <h5 class="card-title">{{cerveza.style}}</h5>
         <p class="card-text">Descripción: {{cerveza.description}}</p>
